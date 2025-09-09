@@ -1,0 +1,10 @@
+
+> crisp-health-mcp-server@1.0.0 dev
+> tsx watch src/index.ts
+
+OpenAI API key not found. Health Q&A will use mock responses.
+🚀 Crisp Health MCP Server running on port 3001
+📊 Health check: http://localhost:3001/health
+🔧 MCP info: http://localhost:3001/mcp/info
+🏥 Google Health integration: ❌
+🤖 OpenAI integration: ❌

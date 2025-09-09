@@ -1,0 +1,607 @@
+{
+  "breakfast": [
+    {
+      "id": "breakfast_001",
+      "name": "Avocado Toast with Eggs",
+      "category": "breakfast",
+      "calories": 420,
+      "prep_time": 10,
+      "difficulty": "easy",
+      "image": "/meals/avocado-toast-eggs.jpg",
+      "nutrition": {
+        "protein": 18,
+        "carbs": 35,
+        "fat": 24,
+        "fiber": 12
+      },
+      "ingredients": [
+        {"name": "Whole grain bread", "amount": "2 slices"},
+        {"name": "Avocado", "amount": "1 medium"},
+        {"name": "Eggs", "amount": "2 large"},
+        {"name": "Lime juice", "amount": "1 tsp"},
+        {"name": "Salt and pepper", "amount": "to taste"}
+      ],
+      "instructions": [
+        "Toast bread until golden brown",
+        "Mash avocado with lime juice, salt, and pepper",
+        "Cook eggs to your preference",
+        "Spread avocado on toast, top with eggs"
+      ],
+      "tags": ["vegetarian", "high-protein", "quick", "healthy-fats"],
+      "alternatives": ["breakfast_002", "breakfast_003"]
+    },
+    {
+      "id": "breakfast_002",
+      "name": "Greek Yogurt Berry Bowl",
+      "category": "breakfast",
+      "calories": 320,
+      "prep_time": 5,
+      "difficulty": "easy",
+      "image": "/meals/greek-yogurt-berry.jpg",
+      "nutrition": {
+        "protein": 20,
+        "carbs": 35,
+        "fat": 8,
+        "fiber": 8
+      },
+      "ingredients": [
+        {"name": "Greek yogurt", "amount": "1 cup"},
+        {"name": "Mixed berries", "amount": "1/2 cup"},
+        {"name": "Granola", "amount": "2 tbsp"},
+        {"name": "Honey", "amount": "1 tsp"},
+        {"name": "Almonds", "amount": "1 tbsp sliced"}
+      ],
+      "instructions": [
+        "Place Greek yogurt in a bowl",
+        "Top with mixed berries",
+        "Add granola and sliced almonds",
+        "Drizzle with honey"
+      ],
+      "tags": ["vegetarian", "high-protein", "quick", "probiotics"],
+      "alternatives": ["breakfast_001", "breakfast_004"]
+    },
+    {
+      "id": "breakfast_003",
+      "name": "Overnight Oats with Banana",
+      "category": "breakfast",
+      "calories": 350,
+      "prep_time": 15,
+      "difficulty": "easy",
+      "image": "/meals/overnight-oats-banana.jpg",
+      "nutrition": {
+        "protein": 12,
+        "carbs": 58,
+        "fat": 8,
+        "fiber": 10
+      },
+      "ingredients": [
+        {"name": "Rolled oats", "amount": "1/2 cup"},
+        {"name": "Milk", "amount": "1/2 cup"},
+        {"name": "Banana", "amount": "1 medium sliced"},
+        {"name": "Chia seeds", "amount": "1 tbsp"},
+        {"name": "Peanut butter", "amount": "1 tbsp"},
+        {"name": "Maple syrup", "amount": "1 tsp"}
+      ],
+      "instructions": [
+        "Mix oats, milk, and chia seeds in jar",
+        "Add peanut butter and maple syrup",
+        "Top with banana slices",
+        "Refrigerate overnight"
+      ],
+      "tags": ["vegan", "meal-prep", "fiber-rich", "sustained-energy"],
+      "alternatives": ["breakfast_002", "breakfast_005"]
+    },
+    {
+      "id": "breakfast_004",
+      "name": "Green Smoothie Bowl",
+      "category": "breakfast",
+      "calories": 280,
+      "prep_time": 8,
+      "difficulty": "easy",
+      "image": "/meals/green-smoothie-bowl.jpg",
+      "nutrition": {
+        "protein": 15,
+        "carbs": 42,
+        "fat": 6,
+        "fiber": 12
+      },
+      "ingredients": [
+        {"name": "Spinach", "amount": "2 cups"},
+        {"name": "Banana", "amount": "1 frozen"},
+        {"name": "Mango chunks", "amount": "1/2 cup"},
+        {"name": "Coconut milk", "amount": "1/3 cup"},
+        {"name": "Protein powder", "amount": "1 scoop"},
+        {"name": "Coconut flakes", "amount": "1 tbsp"}
+      ],
+      "instructions": [
+        "Blend spinach, banana, mango, and coconut milk",
+        "Add protein powder and blend until smooth",
+        "Pour into bowl",
+        "Top with coconut flakes and fresh fruit"
+      ],
+      "tags": ["vegan", "high-protein", "nutrient-dense", "antioxidants"],
+      "alternatives": ["breakfast_002", "breakfast_006"]
+    },
+    {
+      "id": "breakfast_005",
+      "name": "Quinoa Breakfast Bowl",
+      "category": "breakfast",
+      "calories": 380,
+      "prep_time": 12,
+      "difficulty": "medium",
+      "image": "/meals/quinoa-breakfast-bowl.jpg",
+      "nutrition": {
+        "protein": 16,
+        "carbs": 55,
+        "fat": 10,
+        "fiber": 8
+      },
+      "ingredients": [
+        {"name": "Cooked quinoa", "amount": "1/2 cup"},
+        {"name": "Almond milk", "amount": "1/4 cup"},
+        {"name": "Apple", "amount": "1 small diced"},
+        {"name": "Walnuts", "amount": "2 tbsp"},
+        {"name": "Cinnamon", "amount": "1/2 tsp"},
+        {"name": "Maple syrup", "amount": "1 tsp"}
+      ],
+      "instructions": [
+        "Warm quinoa with almond milk",
+        "Add diced apple and cinnamon",
+        "Top with walnuts",
+        "Drizzle with maple syrup"
+      ],
+      "tags": ["vegan", "complete-protein", "gluten-free", "warming"],
+      "alternatives": ["breakfast_003", "breakfast_007"]
+    }
+  ],
+  "lunch": [
+    {
+      "id": "lunch_001",
+      "name": "Mediterranean Quinoa Salad",
+      "category": "lunch",
+      "calories": 450,
+      "prep_time": 15,
+      "difficulty": "easy",
+      "image": "/meals/mediterranean-quinoa-salad.jpg",
+      "nutrition": {
+        "protein": 16,
+        "carbs": 55,
+        "fat": 18,
+        "fiber": 8
+      },
+      "ingredients": [
+        {"name": "Cooked quinoa", "amount": "1 cup"},
+        {"name": "Cucumber", "amount": "1 medium diced"},
+        {"name": "Cherry tomatoes", "amount": "1 cup halved"},
+        {"name": "Red onion", "amount": "1/4 cup diced"},
+        {"name": "Feta cheese", "amount": "1/4 cup crumbled"},
+        {"name": "Olive oil", "amount": "2 tbsp"},
+        {"name": "Lemon juice", "amount": "2 tbsp"}
+      ],
+      "instructions": [
+        "Mix quinoa, cucumber, tomatoes, and onion",
+        "Add feta cheese",
+        "Whisk olive oil and lemon juice",
+        "Toss with dressing and serve"
+      ],
+      "tags": ["vegetarian", "mediterranean", "meal-prep", "fresh"],
+      "alternatives": ["lunch_002", "lunch_003"]
+    },
+    {
+      "id": "lunch_002",
+      "name": "Grilled Chicken & Veggie Wrap",
+      "category": "lunch",
+      "calories": 380,
+      "prep_time": 20,
+      "difficulty": "medium",
+      "image": "/meals/chicken-veggie-wrap.jpg",
+      "nutrition": {
+        "protein": 28,
+        "carbs": 35,
+        "fat": 12,
+        "fiber": 6
+      },
+      "ingredients": [
+        {"name": "Whole wheat tortilla", "amount": "1 large"},
+        {"name": "Grilled chicken breast", "amount": "4 oz sliced"},
+        {"name": "Bell peppers", "amount": "1/2 cup strips"},
+        {"name": "Zucchini", "amount": "1/2 cup sliced"},
+        {"name": "Hummus", "amount": "2 tbsp"},
+        {"name": "Mixed greens", "amount": "1 cup"}
+      ],
+      "instructions": [
+        "Spread hummus on tortilla",
+        "Add mixed greens and chicken",
+        "Top with grilled vegetables",
+        "Roll tightly and cut in half"
+      ],
+      "tags": ["high-protein", "balanced", "portable", "lean"],
+      "alternatives": ["lunch_001", "lunch_004"]
+    },
+    {
+      "id": "lunch_003",
+      "name": "Buddha Bowl with Tahini Dressing",
+      "category": "lunch",
+      "calories": 520,
+      "prep_time": 25,
+      "difficulty": "medium",
+      "image": "/meals/buddha-bowl.jpg",
+      "nutrition": {
+        "protein": 18,
+        "carbs": 68,
+        "fat": 20,
+        "fiber": 16
+      },
+      "ingredients": [
+        {"name": "Brown rice", "amount": "1/2 cup cooked"},
+        {"name": "Roasted sweet potato", "amount": "1/2 cup"},
+        {"name": "Chickpeas", "amount": "1/3 cup"},
+        {"name": "Kale", "amount": "1 cup massaged"},
+        {"name": "Avocado", "amount": "1/4 medium"},
+        {"name": "Tahini", "amount": "2 tbsp"},
+        {"name": "Lemon juice", "amount": "1 tbsp"}
+      ],
+      "instructions": [
+        "Arrange rice, sweet potato, chickpeas in bowl",
+        "Add massaged kale and avocado",
+        "Mix tahini with lemon juice and water",
+        "Drizzle dressing over bowl"
+      ],
+      "tags": ["vegan", "nutrient-dense", "colorful", "satisfying"],
+      "alternatives": ["lunch_001", "lunch_005"]
+    },
+    {
+      "id": "lunch_004",
+      "name": "Salmon & Quinoa Power Bowl",
+      "category": "lunch",
+      "calories": 480,
+      "prep_time": 18,
+      "difficulty": "medium",
+      "image": "/meals/salmon-quinoa-bowl.jpg",
+      "nutrition": {
+        "protein": 32,
+        "carbs": 45,
+        "fat": 16,
+        "fiber": 8
+      },
+      "ingredients": [
+        {"name": "Salmon fillet", "amount": "4 oz"},
+        {"name": "Cooked quinoa", "amount": "1/2 cup"},
+        {"name": "Steamed broccoli", "amount": "1 cup"},
+        {"name": "Edamame", "amount": "1/4 cup"},
+        {"name": "Sesame seeds", "amount": "1 tsp"},
+        {"name": "Teriyaki sauce", "amount": "1 tbsp"}
+      ],
+      "instructions": [
+        "Season and cook salmon until flaky",
+        "Steam broccoli until tender",
+        "Arrange quinoa, salmon, broccoli in bowl",
+        "Top with edamame, sesame seeds, and sauce"
+      ],
+      "tags": ["high-protein", "omega-3", "complete-meal", "anti-inflammatory"],
+      "alternatives": ["lunch_002", "lunch_006"]
+    },
+    {
+      "id": "lunch_005",
+      "name": "Turkey & Avocado Lettuce Wraps",
+      "category": "lunch",
+      "calories": 320,
+      "prep_time": 10,
+      "difficulty": "easy",
+      "image": "/meals/turkey-lettuce-wraps.jpg",
+      "nutrition": {
+        "protein": 25,
+        "carbs": 12,
+        "fat": 18,
+        "fiber": 8
+      },
+      "ingredients": [
+        {"name": "Butter lettuce leaves", "amount": "8 large"},
+        {"name": "Sliced turkey breast", "amount": "4 oz"},
+        {"name": "Avocado", "amount": "1/2 medium sliced"},
+        {"name": "Cherry tomatoes", "amount": "1/2 cup halved"},
+        {"name": "Cucumber", "amount": "1/4 cup diced"},
+        {"name": "Mustard", "amount": "1 tsp"}
+      ],
+      "instructions": [
+        "Wash and dry lettuce leaves",
+        "Layer turkey, avocado, tomatoes in leaves",
+        "Add cucumber and a dot of mustard",
+        "Roll or fold lettuce around filling"
+      ],
+      "tags": ["low-carb", "keto-friendly", "fresh", "quick"],
+      "alternatives": ["lunch_004", "lunch_007"]
+    }
+  ],
+  "dinner": [
+    {
+      "id": "dinner_001",
+      "name": "Herb-Crusted Chicken with Roasted Vegetables",
+      "category": "dinner",
+      "calories": 520,
+      "prep_time": 35,
+      "difficulty": "medium",
+      "image": "/meals/herb-crusted-chicken.jpg",
+      "nutrition": {
+        "protein": 42,
+        "carbs": 25,
+        "fat": 28,
+        "fiber": 8
+      },
+      "ingredients": [
+        {"name": "Chicken breast", "amount": "6 oz"},
+        {"name": "Mixed herbs", "amount": "2 tbsp"},
+        {"name": "Olive oil", "amount": "2 tbsp"},
+        {"name": "Brussels sprouts", "amount": "1 cup halved"},
+        {"name": "Sweet potato", "amount": "1 medium cubed"},
+        {"name": "Garlic", "amount": "2 cloves minced"}
+      ],
+      "instructions": [
+        "Coat chicken with herbs and half the oil",
+        "Toss vegetables with remaining oil and garlic",
+        "Roast vegetables at 425°F for 20 minutes",
+        "Add chicken, cook 15 minutes more"
+      ],
+      "tags": ["high-protein", "one-pan", "lean", "colorful"],
+      "alternatives": ["dinner_002", "dinner_003"]
+    },
+    {
+      "id": "dinner_002",
+      "name": "Lemon Garlic Shrimp with Zucchini Noodles",
+      "category": "dinner",
+      "calories": 380,
+      "prep_time": 20,
+      "difficulty": "easy",
+      "image": "/meals/shrimp-zucchini-noodles.jpg",
+      "nutrition": {
+        "protein": 28,
+        "carbs": 18,
+        "fat": 22,
+        "fiber": 6
+      },
+      "ingredients": [
+        {"name": "Large shrimp", "amount": "6 oz"},
+        {"name": "Zucchini", "amount": "2 medium spiralized"},
+        {"name": "Garlic", "amount": "3 cloves minced"},
+        {"name": "Lemon", "amount": "1 juiced"},
+        {"name": "Olive oil", "amount": "2 tbsp"},
+        {"name": "Parmesan", "amount": "2 tbsp grated"}
+      ],
+      "instructions": [
+        "Sauté garlic in olive oil",
+        "Add shrimp, cook until pink",
+        "Add lemon juice and zucchini noodles",
+        "Toss for 2-3 minutes, top with Parmesan"
+      ],
+      "tags": ["low-carb", "quick", "seafood", "keto-friendly"],
+      "alternatives": ["dinner_001", "dinner_004"]
+    },
+    {
+      "id": "dinner_003",
+      "name": "Vegetarian Stuffed Bell Peppers",
+      "category": "dinner",
+      "calories": 420,
+      "prep_time": 40,
+      "difficulty": "medium",
+      "image": "/meals/stuffed-bell-peppers.jpg",
+      "nutrition": {
+        "protein": 16,
+        "carbs": 58,
+        "fat": 14,
+        "fiber": 12
+      },
+      "ingredients": [
+        {"name": "Bell peppers", "amount": "2 large"},
+        {"name": "Brown rice", "amount": "1/2 cup cooked"},
+        {"name": "Black beans", "amount": "1/2 cup"},
+        {"name": "Corn", "amount": "1/4 cup"},
+        {"name": "Cheese", "amount": "1/4 cup shredded"},
+        {"name": "Onion", "amount": "1/4 cup diced"}
+      ],
+      "instructions": [
+        "Cut tops off peppers, remove seeds",
+        "Mix rice, beans, corn, onion",
+        "Stuff peppers with mixture",
+        "Bake at 375°F for 25 minutes, top with cheese"
+      ],
+      "tags": ["vegetarian", "fiber-rich", "colorful", "satisfying"],
+      "alternatives": ["dinner_002", "dinner_005"]
+    },
+    {
+      "id": "dinner_004",
+      "name": "Beef & Broccoli Stir-Fry",
+      "category": "dinner",
+      "calories": 460,
+      "prep_time": 25,
+      "difficulty": "medium",
+      "image": "/meals/beef-broccoli-stir-fry.jpg",
+      "nutrition": {
+        "protein": 38,
+        "carbs": 28,
+        "fat": 22,
+        "fiber": 8
+      },
+      "ingredients": [
+        {"name": "Beef sirloin", "amount": "5 oz sliced thin"},
+        {"name": "Broccoli", "amount": "2 cups florets"},
+        {"name": "Brown rice", "amount": "1/2 cup cooked"},
+        {"name": "Soy sauce", "amount": "2 tbsp"},
+        {"name": "Garlic", "amount": "2 cloves"},
+        {"name": "Ginger", "amount": "1 tsp minced"}
+      ],
+      "instructions": [
+        "Heat oil in wok or large pan",
+        "Stir-fry beef until browned",
+        "Add broccoli, garlic, ginger",
+        "Add soy sauce, serve over rice"
+      ],
+      "tags": ["high-protein", "iron-rich", "quick", "asian-inspired"],
+      "alternatives": ["dinner_001", "dinner_006"]
+    },
+    {
+      "id": "dinner_005",
+      "name": "Baked Cod with Mediterranean Vegetables",
+      "category": "dinner",
+      "calories": 390,
+      "prep_time": 30,
+      "difficulty": "easy",
+      "image": "/meals/baked-cod-mediterranean.jpg",
+      "nutrition": {
+        "protein": 35,
+        "carbs": 22,
+        "fat": 18,
+        "fiber": 6
+      },
+      "ingredients": [
+        {"name": "Cod fillet", "amount": "6 oz"},
+        {"name": "Cherry tomatoes", "amount": "1 cup"},
+        {"name": "Olives", "amount": "2 tbsp"},
+        {"name": "Red onion", "amount": "1/4 cup sliced"},
+        {"name": "Olive oil", "amount": "2 tbsp"},
+        {"name": "Lemon", "amount": "1/2 juiced"}
+      ],
+      "instructions": [
+        "Place cod in baking dish",
+        "Top with tomatoes, olives, onion",
+        "Drizzle with oil and lemon",
+        "Bake at 400°F for 20 minutes"
+      ],
+      "tags": ["mediterranean", "lean-protein", "omega-3", "one-pan"],
+      "alternatives": ["dinner_002", "dinner_007"]
+    }
+  ],
+  "snacks": [
+    {
+      "id": "snack_001",
+      "name": "Apple with Almond Butter",
+      "category": "snack",
+      "calories": 190,
+      "prep_time": 2,
+      "difficulty": "easy",
+      "image": "/meals/apple-almond-butter.jpg",
+      "nutrition": {
+        "protein": 6,
+        "carbs": 25,
+        "fat": 8,
+        "fiber": 6
+      },
+      "ingredients": [
+        {"name": "Apple", "amount": "1 medium"},
+        {"name": "Almond butter", "amount": "1 tbsp"}
+      ],
+      "instructions": [
+        "Wash and slice apple",
+        "Serve with almond butter for dipping"
+      ],
+      "tags": ["quick", "portable", "natural-sugars", "satisfying"],
+      "alternatives": ["snack_002", "snack_003"]
+    },
+    {
+      "id": "snack_002",
+      "name": "Greek Yogurt with Berries",
+      "category": "snack",
+      "calories": 150,
+      "prep_time": 3,
+      "difficulty": "easy",
+      "image": "/meals/greek-yogurt-berries.jpg",
+      "nutrition": {
+        "protein": 15,
+        "carbs": 18,
+        "fat": 4,
+        "fiber": 4
+      },
+      "ingredients": [
+        {"name": "Greek yogurt", "amount": "1/2 cup"},
+        {"name": "Mixed berries", "amount": "1/3 cup"}
+      ],
+      "instructions": [
+        "Place yogurt in bowl",
+        "Top with fresh berries"
+      ],
+      "tags": ["high-protein", "probiotics", "antioxidants", "refreshing"],
+      "alternatives": ["snack_001", "snack_004"]
+    },
+    {
+      "id": "snack_003",
+      "name": "Hummus with Veggie Sticks",
+      "category": "snack",
+      "calories": 120,
+      "prep_time": 5,
+      "difficulty": "easy",
+      "image": "/meals/hummus-veggie-sticks.jpg",
+      "nutrition": {
+        "protein": 6,
+        "carbs": 15,
+        "fat": 4,
+        "fiber": 6
+      },
+      "ingredients": [
+        {"name": "Hummus", "amount": "2 tbsp"},
+        {"name": "Carrots", "amount": "1/2 cup sticks"},
+        {"name": "Cucumber", "amount": "1/2 cup sticks"},
+        {"name": "Bell pepper", "amount": "1/4 cup strips"}
+      ],
+      "instructions": [
+        "Cut vegetables into sticks",
+        "Serve with hummus for dipping"
+      ],
+      "tags": ["vegan", "fiber-rich", "crunchy", "colorful"],
+      "alternatives": ["snack_002", "snack_005"]
+    },
+    {
+      "id": "snack_004",
+      "name": "Trail Mix",
+      "category": "snack",
+      "calories": 200,
+      "prep_time": 2,
+      "difficulty": "easy",
+      "image": "/meals/trail-mix.jpg",
+      "nutrition": {
+        "protein": 8,
+        "carbs": 20,
+        "fat": 12,
+        "fiber": 4
+      },
+      "ingredients": [
+        {"name": "Almonds", "amount": "1 tbsp"},
+        {"name": "Walnuts", "amount": "1 tbsp"},
+        {"name": "Dried cranberries", "amount": "1 tbsp"},
+        {"name": "Dark chocolate chips", "amount": "1 tsp"}
+      ],
+      "instructions": [
+        "Mix all ingredients together",
+        "Store in airtight container"
+      ],
+      "tags": ["portable", "energy-dense", "healthy-fats", "satisfying"],
+      "alternatives": ["snack_001", "snack_006"]
+    },
+    {
+      "id": "snack_005",
+      "name": "Avocado Toast Mini",
+      "category": "snack",
+      "calories": 160,
+      "prep_time": 5,
+      "difficulty": "easy",
+      "image": "/meals/avocado-toast-mini.jpg",
+      "nutrition": {
+        "protein": 6,
+        "carbs": 16,
+        "fat": 10,
+        "fiber": 8
+      },
+      "ingredients": [
+        {"name": "Whole grain bread", "amount": "1 slice"},
+        {"name": "Avocado", "amount": "1/4 medium"},
+        {"name": "Lime juice", "amount": "1/2 tsp"},
+        {"name": "Sea salt", "amount": "pinch"}
+      ],
+      "instructions": [
+        "Toast bread until golden",
+        "Mash avocado with lime and salt",
+        "Spread on toast"
+      ],
+      "tags": ["healthy-fats", "fiber-rich", "quick", "satisfying"],
+      "alternatives": ["snack_003", "snack_007"]
+    }
+  ]
+}

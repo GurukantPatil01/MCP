@@ -106,7 +106,7 @@ export function HealthChat({ className }: HealthChatProps) {
   };
 
   return (
-    <Card className={cn('flex flex-col h-[400px]', className)}>
+    <Card className={cn('flex flex-col h-[600px] lg:h-[700px]', className)}>
       <CardHeader className="pb-3">
         <CardTitle className="text-lg flex items-center gap-2">
           <MessageCircle className="h-5 w-5" />
@@ -115,7 +115,7 @@ export function HealthChat({ className }: HealthChatProps) {
       </CardHeader>
       <CardContent className="flex flex-col flex-1 p-4 pt-0">
         {/* Messages */}
-        <div className="flex-1 overflow-y-auto space-y-4 mb-4 pr-2">
+        <div className="flex-1 overflow-y-auto space-y-4 mb-4 pr-2 hover:pr-1 transition-all duration-200 scroll-smooth">
           {messages.map((message) => (
             <div
               key={message.id}
@@ -143,7 +143,7 @@ export function HealthChat({ className }: HealthChatProps) {
                   'rounded-lg px-4 py-2 text-sm',
                   message.type === 'user'
                     ? 'bg-blue-500 text-white'
-                    : 'bg-gray-100 text-gray-900 border'
+                    : 'bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 border dark:border-gray-600'
                 )}
               >
                 <p className="whitespace-pre-wrap">{message.content}</p>
@@ -162,11 +162,11 @@ export function HealthChat({ className }: HealthChatProps) {
               <div className="flex-shrink-0 w-8 h-8 rounded-full bg-green-500 text-white flex items-center justify-center">
                 <Bot className="h-4 w-4" />
               </div>
-              <div className="bg-gray-100 rounded-lg px-4 py-2 border">
+              <div className="bg-gray-100 dark:bg-gray-800 rounded-lg px-4 py-2 border dark:border-gray-600">
                 <div className="flex space-x-1">
-                  <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
-                  <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce delay-75"></div>
-                  <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce delay-150"></div>
+                  <div className="w-2 h-2 bg-gray-400 dark:bg-gray-500 rounded-full animate-bounce"></div>
+                  <div className="w-2 h-2 bg-gray-400 dark:bg-gray-500 rounded-full animate-bounce delay-75"></div>
+                  <div className="w-2 h-2 bg-gray-400 dark:bg-gray-500 rounded-full animate-bounce delay-150"></div>
                 </div>
               </div>
             </div>
@@ -183,7 +183,7 @@ export function HealthChat({ className }: HealthChatProps) {
                 <button
                   key={index}
                   onClick={() => handleSuggestionClick(question)}
-                  className="text-xs p-2 bg-gray-50 hover:bg-gray-100 rounded-md text-left transition-colors border"
+                  className="text-xs p-2 bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md text-left transition-colors border dark:border-gray-600"
                 >
                   {question}
                 </button>

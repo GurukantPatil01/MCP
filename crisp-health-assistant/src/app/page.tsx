@@ -3,16 +3,18 @@
 import { useUser } from '@clerk/nextjs';
 import { LandingPage } from '@/components/LandingPage';
 import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 export default function Home() {
   const { isSignedIn, isLoaded } = useUser();
   const router = useRouter();
 
   // If user is signed in, redirect to dashboard
-  if (isLoaded && isSignedIn) {
-    router.push('/dashboard');
-    return null;
-  }
+  useEffect(() => {
+    if (isLoaded && isSignedIn) {
+      router.push('/dashboard');
+    }
+  }, [isLoaded, isSignedIn, router]);
 
   const handleSignIn = () => {
     router.push('/sign-in');

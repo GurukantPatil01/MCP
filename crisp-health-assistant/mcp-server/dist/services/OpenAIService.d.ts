@@ -11,5 +11,6 @@ export declare class OpenAIService {
     private formatHealthDataForAI;
     private getLatestMetrics;
     private calculateTrends;
+    generateText(prompt: string): Promise<string>;
 }
 //# sourceMappingURL=OpenAIService.d.ts.map

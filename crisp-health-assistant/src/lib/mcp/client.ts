@@ -33,6 +33,16 @@ export class MCPHealthClient {
     });
   }
 
+  async getMealRecommendations(params: {
+    meal_type?: 'breakfast' | 'lunch' | 'dinner' | 'snack';
+    max_prep_time?: number;
+    dietary_restrictions?: string[];
+    calorie_range?: 'low' | 'medium' | 'high';
+    activity_level?: string;
+  }): Promise<MCPToolResponse> {
+    return this.callTool('get_meal_recommendations', params);
+  }
+
   private async callTool(tool: string, params: Record<string, unknown>): Promise<MCPToolResponse> {
     try {
       // Map tool names to correct endpoints
@@ -40,7 +50,8 @@ export class MCPHealthClient {
         'get_health_data': 'health-data',
         'ask_health_question': 'health-question', 
         'get_health_summary': 'health-summary',
-        'get_health_trends': 'health-trends'
+        'get_health_trends': 'health-trends',
+        'get_meal_recommendations': 'meal-recommendations'
       };
       
       const endpoint = endpointMap[tool] || tool;

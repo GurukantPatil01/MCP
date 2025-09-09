@@ -178,6 +178,25 @@ class OpenAIService {
         const avgSleep = Math.round((healthData.sleep.reduce((sum, m) => sum + m.value, 0) / healthData.sleep.length || 0) * 10) / 10;
         return { avgSteps, avgCalories, avgHeartRate, avgSleep };
     }
+    // Generic text generation helper for non-health prompts (e.g., meal suggestions)
+    async generateText(prompt) {
+        if (!this.hasApiKey || !this.openai) {
+            return 'AI suggestions are running in mock mode. Enable OPENAI_API_KEY for smarter insights.';
+        }
+        try {
+            const response = await this.openai.chat.completions.create({
+                model: 'gpt-4',
+                messages: [{ role: 'user', content: prompt }],
+                max_tokens: 200,
+                temperature: 0.7,
+            });
+            return response.choices[0].message.content || '';
+        }
+        catch (error) {
+            console.error('OpenAI generateText error:', error);
+            return '';
+        }
+    }
 }
 exports.OpenAIService = OpenAIService;
 //# sourceMappingURL=OpenAIService.js.map

@@ -9,7 +9,7 @@ import {
   Activity, 
   Mail, 
   Lock, 
-  User,
+  User, 
   ArrowLeft, 
   Eye,
   EyeOff

@@ -11,10 +11,11 @@ const dotenv_1 = __importDefault(require("dotenv"));
 const GoogleFitService_1 = require("./services/GoogleFitService");
 const OpenAIService_1 = require("./services/OpenAIService");
 const HealthTools_1 = require("./tools/HealthTools");
+const MealTools_1 = require("./tools/MealTools");
 // Load environment variables
 dotenv_1.default.config();
 const app = (0, express_1.default)();
-const port = process.env.MCP_SERVER_PORT || 3001;
+const port = parseInt(process.env.MCP_SERVER_PORT || '3001');
 // Middleware
 app.use((0, helmet_1.default)());
 app.use((0, cors_1.default)());
@@ -24,6 +25,7 @@ app.use(express_1.default.json());
 const googleFitService = new GoogleFitService_1.GoogleFitService();
 const openAIService = new OpenAIService_1.OpenAIService();
 const healthTools = new HealthTools_1.MCPHealthTools(googleFitService, openAIService);
+const mealTools = new MealTools_1.MealTools(openAIService);
 // Health check endpoint
 app.get('/health', (req, res) => {
     res.json({
@@ -105,6 +107,20 @@ app.get('/mcp/info', (req, res) => {
                         }
                     }
                 }
+            },
+            {
+                name: 'get_meal_recommendations',
+                description: 'Get personalized meal suggestions based on user preferences and health data',
+                inputSchema: {
+                    type: 'object',
+                    properties: {
+                        meal_type: { type: 'string', enum: ['breakfast', 'lunch', 'dinner', 'snack'] },
+                        max_prep_time: { type: 'number' },
+                        dietary_restrictions: { type: 'array', items: { type: 'string' } },
+                        calorie_range: { type: 'string', enum: ['low', 'medium', 'high'] },
+                        activity_level: { type: 'string' }
+                    }
+                }
             }
         ]
     });
@@ -176,6 +192,27 @@ app.post('/mcp/health-trends', async (req, res) => {
         });
     }
 });
+// Get meal recommendations tool
+app.post('/mcp/meal-recommendations', async (req, res) => {
+    try {
+        const { meal_type, max_prep_time, dietary_restrictions, calorie_range, activity_level } = req.body;
+        const result = await mealTools.getMealRecommendations({
+            meal_type,
+            max_prep_time,
+            dietary_restrictions,
+            calorie_range,
+            activity_level,
+        });
+        res.json(result);
+    }
+    catch (error) {
+        console.error('Meal recommendations tool error:', error);
+        res.status(500).json({
+            success: false,
+            error: error instanceof Error ? error.message : 'Internal server error'
+        });
+    }
+});
 // Error handling middleware
 app.use((error, req, res, next) => {
     console.error('Unhandled error:', error);
@@ -194,7 +231,7 @@ app.use((req, res) => {
     });
 });
 // Start server
-app.listen(port, () => {
+app.listen(port, 'localhost', () => {
     console.log(`🚀 Crisp Health MCP Server running on port ${port}`);
     console.log(`📊 Health check: http://localhost:${port}/health`);
     console.log(`🔧 MCP info: http://localhost:${port}/mcp/info`);

@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { HealthMetricCard } from './HealthMetricCard';
 import { HealthChat } from './HealthChat';
@@ -12,39 +11,30 @@ import {
   Flame, 
   Heart, 
   Moon, 
-  RefreshCw,
   TrendingUp,
-  Lightbulb,
-  LogOut,
-  User
+  Lightbulb
 } from 'lucide-react';
-import { cn } from '@/lib/utils';
 
 interface HealthDashboardProps {
-  onSignOut?: () => void;
-  user?: {
-    name: string;
-    email: string;
-    avatar?: string;
-  };
+  onLastUpdateChange?: (date: Date | null) => void;
 }
 
-export function HealthDashboard({ onSignOut, user }: HealthDashboardProps) {
+export function HealthDashboard({ onLastUpdateChange }: HealthDashboardProps) {
   const [healthData, setHealthData] = useState<HealthData | null>(null);
   const [loading, setLoading] = useState(true);
   const [summary, setSummary] = useState<string>('');
   const [lastUpdate, setLastUpdate] = useState<Date | null>(null);
-  const [refreshing, setRefreshing] = useState(false);
 
   const fetchHealthData = async () => {
     try {
-      setRefreshing(true);
       const response = await fetch('/api/health/data?type=all&days=7');
       const data = await response.json();
 
       if (response.ok && data.data) {
         setHealthData(data.data);
-        setLastUpdate(new Date(data.timestamp));
+        const updateTime = new Date(data.timestamp);
+        setLastUpdate(updateTime);
+        onLastUpdateChange?.(updateTime);
       } else {
         console.error('Failed to fetch health data:', data.error);
       }
@@ -52,7 +42,6 @@ export function HealthDashboard({ onSignOut, user }: HealthDashboardProps) {
       console.error('Error fetching health data:', error);
     } finally {
       setLoading(false);
-      setRefreshing(false);
     }
   };
 
@@ -69,15 +58,23 @@ export function HealthDashboard({ onSignOut, user }: HealthDashboardProps) {
     }
   };
 
-  useEffect(() => {
-    fetchHealthData();
-    fetchHealthSummary();
-  }, []);
+  const fetchHealthDataCallback = React.useCallback(fetchHealthData, [onLastUpdateChange]);
+  const fetchHealthSummaryCallback = React.useCallback(fetchHealthSummary, []);
 
-  const handleRefresh = () => {
-    fetchHealthData();
-    fetchHealthSummary();
-  };
+  useEffect(() => {
+    fetchHealthDataCallback();
+    fetchHealthSummaryCallback();
+    
+    // Listen for refresh events from header
+    const handleRefresh = () => {
+      fetchHealthDataCallback();
+      fetchHealthSummaryCallback();
+    };
+    
+    window.addEventListener('refreshHealthData', handleRefresh);
+    return () => window.removeEventListener('refreshHealthData', handleRefresh);
+  }, [fetchHealthDataCallback, fetchHealthSummaryCallback]);
+
 
   // Calculate metrics for display
   const calculateMetrics = () => {
@@ -130,82 +127,8 @@ export function HealthDashboard({ onSignOut, user }: HealthDashboardProps) {
   const metrics = calculateMetrics();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
+    <div className="p-4 transition-colors duration-300">
       <div className="max-w-7xl mx-auto space-y-6">
-        {/* Header */}
-        <div className="flex items-center justify-between">
-          <div>
-            <div className="flex items-center gap-3">
-              <div className="p-2 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl">
-                <Activity className="h-6 w-6 text-white" />
-              </div>
-              <div>
-                <h1 className="text-3xl font-bold text-gray-900">Health Dashboard</h1>
-                <p className="text-gray-600 mt-1">
-                  {lastUpdate ? `Last updated: ${lastUpdate.toLocaleString()}` : 'Loading...'}
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="flex items-center gap-3">
-            <Button 
-              onClick={handleRefresh} 
-              disabled={refreshing}
-              variant="outline"
-              className="gap-2"
-            >
-              <RefreshCw className={cn('h-4 w-4', refreshing && 'animate-spin')} />
-              Refresh
-            </Button>
-            
-            {/* User Menu */}
-            <div className="flex items-center gap-2">
-              <div className="hidden sm:block text-right">
-                <p className="text-sm font-medium text-gray-900">{user?.name || 'User'}</p>
-                <p className="text-xs text-gray-500">{user?.email || 'user@example.com'}</p>
-              </div>
-              <div className="flex items-center gap-2">
-                {user?.avatar ? (
-                  <img 
-                    src={user.avatar} 
-                    alt={user.name || 'User'} 
-                    className="w-10 h-10 rounded-full object-cover border-2 border-white shadow-sm"
-                  />
-                ) : (
-                  <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full flex items-center justify-center">
-                    <User className="h-5 w-5 text-white" />
-                  </div>
-                )}
-                {onSignOut && (
-                  <>
-                    {/* Desktop Logout Button */}
-                    <Button
-                      onClick={onSignOut}
-                      variant="ghost"
-                      size="sm"
-                      className="hidden sm:flex text-gray-600 hover:text-red-600 hover:bg-red-50 p-2 gap-2 items-center"
-                      title="Sign out"
-                    >
-                      <LogOut className="h-4 w-4" />
-                      <span className="text-sm">Logout</span>
-                    </Button>
-                    
-                    {/* Mobile Logout Button */}
-                    <Button
-                      onClick={onSignOut}
-                      variant="ghost"
-                      size="sm"
-                      className="sm:hidden text-gray-600 hover:text-red-600 hover:bg-red-50 p-2"
-                      title="Sign out"
-                    >
-                      <LogOut className="h-4 w-4" />
-                    </Button>
-                  </>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
 
         {/* Health Metrics Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -278,9 +201,9 @@ export function HealthDashboard({ onSignOut, user }: HealthDashboardProps) {
                     <Skeleton className="h-4 w-1/2" />
                   </div>
                 ) : summary ? (
-                  <p className="text-sm text-gray-600 leading-relaxed">{summary}</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">{summary}</p>
                 ) : (
-                  <p className="text-sm text-gray-500">No summary available</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">No summary available</p>
                 )}
               </CardContent>
             </Card>
@@ -300,21 +223,21 @@ export function HealthDashboard({ onSignOut, user }: HealthDashboardProps) {
                   ))
                 ) : (
                   <>
-                    <div className="flex items-center gap-3 p-3 bg-green-50 rounded-lg border border-green-200">
+                    <div className="flex items-center gap-3 p-3 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
                       <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                      <p className="text-sm text-green-800">
+                      <p className="text-sm text-green-800 dark:text-green-300">
                         Great job staying active this week!
                       </p>
                     </div>
-                    <div className="flex items-center gap-3 p-3 bg-blue-50 rounded-lg border border-blue-200">
+                    <div className="flex items-center gap-3 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
                       <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                      <p className="text-sm text-blue-800">
+                      <p className="text-sm text-blue-800 dark:text-blue-300">
                         Your sleep pattern is improving
                       </p>
                     </div>
-                    <div className="flex items-center gap-3 p-3 bg-orange-50 rounded-lg border border-orange-200">
+                    <div className="flex items-center gap-3 p-3 bg-orange-50 dark:bg-orange-900/20 rounded-lg border border-orange-200 dark:border-orange-800">
                       <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
-                      <p className="text-sm text-orange-800">
+                      <p className="text-sm text-orange-800 dark:text-orange-300">
                         Try to maintain consistent heart rate
                       </p>
                     </div>
@@ -333,7 +256,7 @@ export function HealthDashboard({ onSignOut, user }: HealthDashboardProps) {
         {/* Footer */}
         <Card className="mt-8">
           <CardContent className="p-6">
-            <div className="text-center text-sm text-gray-500">
+            <div className="text-center text-sm text-gray-500 dark:text-gray-400">
               <p>
                 Data synced with Google Health • Last sync: {lastUpdate?.toLocaleString() || 'Never'}
               </p>

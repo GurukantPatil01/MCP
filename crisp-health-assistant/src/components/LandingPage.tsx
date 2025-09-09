@@ -5,6 +5,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { ThemeToggle } from '@/components/ThemeToggle';
 import { 
   Activity, 
   Brain, 
@@ -178,9 +179,14 @@ export function LandingPage({ onSignIn, onSignUp, onDemoAccess }: LandingPagePro
 
   return (
     <div ref={containerRef} className="min-h-screen overflow-hidden">
+      {/* Theme Toggle */}
+      <div className="fixed top-6 right-6 z-50">
+        <ThemeToggle />
+      </div>
+      
       {/* Hero Section */}
-      <section ref={heroRef} className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
-        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+      <section ref={heroRef} className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors duration-500">
+        <div className="absolute inset-0 bg-grid-pattern opacity-5 dark:opacity-10"></div>
         <div className="container mx-auto px-4 z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="text-center lg:text-left">
@@ -189,9 +195,9 @@ export function LandingPage({ onSignIn, onSignUp, onDemoAccess }: LandingPagePro
                 <br />
                 <span className="text-4xl lg:text-6xl">Intelligently Tracked</span>
               </h1>
-              <p className="hero-subtitle text-xl lg:text-2xl text-gray-600 mt-6 leading-relaxed">
+              <p className="hero-subtitle text-xl lg:text-2xl text-gray-600 dark:text-gray-300 mt-6 leading-relaxed transition-colors">
                 A minimalist dashboard that transforms your Google Health data into 
-                <span className="font-semibold text-indigo-600"> AI-powered insights</span> for better wellness decisions.
+                <span className="font-semibold text-indigo-600 dark:text-indigo-400"> AI-powered insights</span> for better wellness decisions.
               </p>
               <div className="hero-buttons flex flex-col sm:flex-row gap-4 mt-8 justify-center lg:justify-start">
                 <Button 
@@ -243,18 +249,18 @@ export function LandingPage({ onSignIn, onSignUp, onDemoAccess }: LandingPagePro
                 </div>
                 
                 {/* Main dashboard mockup */}
-                <div className="bg-white rounded-3xl shadow-2xl p-6 border border-gray-100">
+                <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl p-6 border border-gray-100 dark:border-gray-700 transition-colors duration-500">
                   <div className="space-y-4">
                     <div className="flex justify-between items-center">
                       <div className="h-3 w-24 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full"></div>
-                      <div className="h-3 w-16 bg-gray-200 rounded-full"></div>
+                      <div className="h-3 w-16 bg-gray-200 dark:bg-gray-600 rounded-full transition-colors"></div>
                     </div>
                     <div className="grid grid-cols-2 gap-4">
                       {[1, 2, 3, 4].map((i) => (
-                        <div key={i} className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-4 space-y-2">
-                          <div className="h-2 w-12 bg-gray-300 rounded-full"></div>
+                        <div key={i} className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-800 rounded-xl p-4 space-y-2 transition-colors">
+                          <div className="h-2 w-12 bg-gray-300 dark:bg-gray-600 rounded-full transition-colors"></div>
                           <div className="h-6 w-16 bg-gradient-to-r from-blue-400 to-purple-400 rounded-lg"></div>
-                          <div className="w-12 h-12 bg-gradient-to-br from-indigo-200 to-purple-200 rounded-full mx-auto"></div>
+                          <div className="w-12 h-12 bg-gradient-to-br from-indigo-200 to-purple-200 dark:from-indigo-300 dark:to-purple-300 rounded-full mx-auto"></div>
                         </div>
                       ))}
                     </div>
@@ -274,30 +280,30 @@ export function LandingPage({ onSignIn, onSignUp, onDemoAccess }: LandingPagePro
       </section>
 
       {/* Features Section */}
-      <section ref={featuresRef} className="py-20 bg-white">
+      <section ref={featuresRef} className="py-20 bg-white dark:bg-gray-900 transition-colors duration-500">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6 transition-colors">
               Why Choose <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Crisp Health</span>?
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto transition-colors">
               Experience the future of health tracking with cutting-edge AI and beautiful, intuitive design.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature, index) => (
-              <Card key={index} className="feature-card group hover:shadow-xl transition-all duration-500 border-0 bg-gradient-to-br from-white to-gray-50 hover:scale-105">
+              <Card key={index} className="feature-card group hover:shadow-xl dark:hover:shadow-2xl transition-all duration-500 border-0 bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 hover:scale-105">
                 <CardHeader className="text-center pb-4">
                   <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-r ${feature.gradient} text-white mb-4 group-hover:scale-110 transition-transform duration-300`}>
                     {feature.icon}
                   </div>
-                  <CardTitle className="text-xl font-bold text-gray-900 group-hover:text-indigo-600 transition-colors">
+                  <CardTitle className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                     {feature.title}
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="text-center">
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed transition-colors">
                     {feature.description}
                   </p>
                 </CardContent>
@@ -344,27 +350,27 @@ export function LandingPage({ onSignIn, onSignUp, onDemoAccess }: LandingPagePro
       </section>
 
       {/* CTA Section */}
-      <section ref={ctaRef} className="cta-section py-20 bg-gradient-to-r from-blue-50 to-indigo-50">
+      <section ref={ctaRef} className="cta-section py-20 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-gray-800 dark:to-gray-900 transition-colors duration-500">
         <div className="container mx-auto px-4 text-center">
           <div className="cta-content max-w-4xl mx-auto">
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6 transition-colors">
               Ready to Transform Your Health Journey?
             </h2>
-            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+            <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed transition-colors">
               Get started in 60 seconds. Connect your Google Health account and experience 
               the power of AI-driven health insights.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-              <div className="flex items-center gap-2 text-green-600">
+              <div className="flex items-center gap-2 text-green-600 dark:text-green-400 transition-colors">
                 <CheckCircle className="h-5 w-5" />
                 <span>Free to start</span>
               </div>
-              <div className="flex items-center gap-2 text-green-600">
+              <div className="flex items-center gap-2 text-green-600 dark:text-green-400 transition-colors">
                 <CheckCircle className="h-5 w-5" />
                 <span>No credit card required</span>
               </div>
-              <div className="flex items-center gap-2 text-green-600">
+              <div className="flex items-center gap-2 text-green-600 dark:text-green-400 transition-colors">
                 <CheckCircle className="h-5 w-5" />
                 <span>Privacy guaranteed</span>
               </div>
@@ -382,7 +388,7 @@ export function LandingPage({ onSignIn, onSignUp, onDemoAccess }: LandingPagePro
               <Button 
                 variant="outline" 
                 size="lg"
-                className="px-8 py-4 text-lg border-2 hover:bg-indigo-50 transition-all duration-300"
+                className="px-8 py-4 text-lg border-2 hover:bg-indigo-50 dark:hover:bg-gray-700 dark:border-gray-600 dark:text-gray-200 transition-all duration-300"
               >
                 Learn More
               </Button>
