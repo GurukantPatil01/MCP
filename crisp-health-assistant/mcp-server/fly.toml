@@ -1,0 +1,50 @@
+# fly.toml app configuration file generated for crisp-health-mcp-server
+
+app = "crisp-health-mcp-server"
+primary_region = "sjc" # Silicon Valley region for optimal performance
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  NODE_ENV = "production"
+  MCP_SERVER_PORT = "3001"
+
+[[services]]
+  internal_port = 3001
+  protocol = "tcp"
+
+  [services.concurrency]
+    hard_limit = 25
+    soft_limit = 20
+
+  [[services.ports]]
+    handlers = ["http"]
+    port = "80"
+
+  [[services.ports]]
+    handlers = ["tls", "http"]
+    port = "443"
+
+  [[services.tcp_checks]]
+    interval = "10s"
+    timeout = "2s"
+
+  [[services.http_checks]]
+    interval = "30s"
+    timeout = "10s"
+    method = "GET"
+    path = "/health"
+
+[http_service]
+  internal_port = 3001
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 1
+  max_machines_running = 3
+
+[[vm]]
+  cpu_kind = "shared"
+  cpus = 1
+  memory_mb = 512
